@@ -1,17 +1,17 @@
-class Quiz extends Model {}
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection.js');
 
-Quiz.init(
+class adminUser extends Model {}
+
+adminUser.init(
   {
-    author_email: {
+    login: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    title: {
+    password: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
-    description: {
-      type: DataTypes.TEXT,
     },
     updatedAt: {
       type: DataTypes.DATE,
@@ -23,9 +23,16 @@ Quiz.init(
       allowNull: true,
       defaultValue: null,
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+      defaultValue: null,
+    },
   },
   {
     sequelize,
-    tableName: 'quiz',
+    tableName: 'adminUser',
   }
 );
+
+module.exports = adminUser;

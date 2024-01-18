@@ -31,3 +31,15 @@ Afin de réaliser ce projet nous dépendons de :
 La vue du panel admin se veut simple est générer avec Bootstrap/ejs.
 Les opérations CRUD sont faciles d'accès avec des bouttons.
 Les données sont mise sous forme de tableau.
+
+## La Structure du middleware
+
+Le middleware est composé d'une classe principale qui permet de gérer le routeur, les modèles et les rôles.
+Il s'appelle avec app.use(..., {sequelize, options}).
+
+## feature 100%
+
+- page login
+- page logout
+- affichage des models du site
+- panneau d'administration des utilisateurs
