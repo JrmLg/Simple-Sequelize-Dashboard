@@ -5,7 +5,7 @@ class adminRole extends Model {}
 
 adminRole.init(
   {
-    role: {
+    name: {
       type: DataTypes.ENUM('admin', 'superadmin'),
       allowNull: false,
     },

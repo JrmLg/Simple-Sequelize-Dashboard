@@ -5,20 +5,12 @@ class adminPermission extends Model {}
 
 adminPermission.init(
   {
-    permissionToRead: {
-      type: DataTypes.BOOLEAN,
+    permission: {
+      type: DataTypes.ENUM('create', 'read', 'update', 'delete'),
       allowNull: false,
     },
-    permissionToWrite: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    permissionToUpdate: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    permissionToDelete: {
-      type: DataTypes.BOOLEAN,
+    tableName: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },
