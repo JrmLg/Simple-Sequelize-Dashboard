@@ -9,7 +9,7 @@ Depuis la vue d'administration, il est possible de gérer :
 - Les modèles Sequelize (CRUD)
 - Les rôles de manière simplifiés
 
-Il est capable de générer les trois tables de bases pour la gestion de droits d'accès. (User, Role, Permission)
+Il est capable de générer les trois tables de bases pour la gestion de droits d'accès. (adminUser, adminRole, adminPermission)
 
 ## Prérequis du projet
 

@@ -1,11 +1,3 @@
-class SimpleDash {
-    /**
-     * @param {Sequelize} sequelize instance
-     * @param {Object} options
-     * */
-    constructor(sequelize, options) {
-        //
-    }
-}
+const SimpleDash = require('./lib/simpleDash')
 
 module.exports = SimpleDash
