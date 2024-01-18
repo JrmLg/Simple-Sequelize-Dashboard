@@ -1,33 +1,24 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('./sequelize-client');
+class Quiz extends Model {}
 
-class User extends Model {}
-User.init(
+Quiz.init(
   {
-    firstname: DataTypes.TEXT,
-
-    lastname: DataTypes.TEXT,
-
-    email: {
-      type: DataTypes.STRING(100), // -> VARCHAR(100)
+    author_email: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-
-    password: {
+    title: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    role: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
+    description: {
+      type: DataTypes.TEXT,
     },
-    deletedAt: {
+    updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: null,
     },
-    updatedAt: {
+    deletedAt: {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: null,
@@ -35,9 +26,6 @@ User.init(
   },
   {
     sequelize,
-    tableName: 'user',
-    paranoid: true,
+    tableName: 'quiz',
   }
 );
-
-module.exports = User;
