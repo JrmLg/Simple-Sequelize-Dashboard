@@ -4,20 +4,12 @@ const adminPermission = require('./adminPermission');
 const adminRole = require('./adminRole');
 const adminUser = require('./adminUser');
 
-// un administrateur a un rôle
-adminUser.belongsTo(adminRole, {
-  foreignKey: 'adminRole_Id',
-  as: 'adminRole',
-});
-adminRole.hasMany(adminUser, {
-  foreignKey: 'adminRole_Id',
-  as: 'adminUser',
-});
+// la table de jointure UserRole
+adminUser.belongsToMany(adminRole, { through: 'UserRole' });
+adminRole.belongsToMany(adminUser, { through: 'UserRole' });
 
-// un rôle a plusieurs permissions
-adminRole.belongsToMany(adminPermission,
-    {
-        through: 'RolePermission',
+// la table de jointure RolePermission
+adminRole.belongsToMany(adminPermission, { through: 'RolePermission' });
+adminPermission.belongsToMany(adminRole, { through: 'RolePermission' });
 
-    }
-  
+module.exports = { adminPermission, adminRole, adminUser };

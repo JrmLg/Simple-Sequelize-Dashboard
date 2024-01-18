@@ -6,22 +6,22 @@
 
 **En tant que :** Administrateur du système
 
-**Je veux :** Pouvoir ajouter un nouvel utilisateur à la base de données
+**Je veux :** Pouvoir ajouter un nouvel admin à la base de données
 
-**Afin de :** Permettre l'inscription de nouveaux membres avec des rôles et des autorisations spécifiques
+**Afin de :** Permettre l'inscription de nouveaux admin avec des rôles et des autorisations spécifiques
 
 **Scénario :**
 
-1. En tant qu'administrateur, je vais sur la page de gestion des utilisateurs dans le Dashboard.
-2. Je trouve l'option pour ajouter un nouvel utilisateur.
-3. Je saisis les informations nécessaires pour le nouvel utilisateur, y compris le nom, l'adresse e-mail, le mot de passe, et le rôle attribué.
-4. Je valide les informations et ajoute le nouvel utilisateur à la base de données.
-5. Le nouvel utilisateur est maintenant enregistré dans le système avec le rôle spécifié.
+1. En tant qu'administrateur, je vais sur la page de gestion des admin dans le Dashboard.
+2. Je trouve l'option pour ajouter un nouvel admin.
+3. Je saisis les informations nécessaires pour le nouvel admin, y compris le nom, l'adresse e-mail, le mot de passe, et le rôle attribué.
+4. Je valide les informations et ajoute le nouvel admin à la base de données.
+5. Le nouvel admin est maintenant enregistré dans le système avec le rôle spécifié.
 
 **Critères d'Acceptation :**
 
-- L'utilisateur doit être enregistré avec des informations valides.
-- Le rôle attribué à l'utilisateur doit être sélectionnable parmi les rôles existants.
+- L'admin doit être enregistré avec des informations valides.
+- Le rôle attribué à l'admin doit être sélectionnable parmi les rôles existants.
 
 ## User Story 2:
 

@@ -5,18 +5,22 @@ class adminUser extends Model {}
 
 adminUser.init(
   {
-    login: {
+    name: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     password: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      defaultValue: null,
+    isSuperAdmin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
     },
     deletedAt: {
       type: DataTypes.DATE,
