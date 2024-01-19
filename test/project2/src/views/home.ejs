@@ -1,0 +1,39 @@
+<%- include('./partials/header') %>
+
+<main class="container py-4">
+    <!-- Welcome -->
+    <div class="text-center">
+        <h2 class="h1 my-4">Bienvenue sur O'Quiz</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="row mb-3 text-center flew-wrap">
+        <% for (const quiz of quizzes) { %>
+           <!-- One card -->
+           <div class="col-4">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3 class="h2"><%= quiz.title %></h3>
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h4 class="h3"><%= quiz.description %></h4>
+                        <p><%= quiz.author.firstname + ' ' + quiz.author.lastname %></p>
+                        <ul class="list-unstyled mb-4 p-0">
+                            <% for (const tag of quiz.tags) { %>
+                                <a href="/tags">
+                                    <li class="badge bg-primary"><%= tag.name %></li>
+                                </a>
+                            <% } %>
+                        </ul>
+                        <a href="/quiz/<%= quiz.id %>" class="btn btn-lg btn-primary text-white">Jouer</a>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+
+    </div>
+</main>
+
+<%- include('./partials/footer') %>

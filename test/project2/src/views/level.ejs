@@ -1,0 +1,22 @@
+<%- include('./partials/header') %>
+
+<main class="container py-4">
+
+  <h1 class="my-3">Editer un niveau</h1>
+
+  <form class="mb-5" action="#" method="POST">
+    <label class="form-label" for="name">Nom actuel du niveau</label>
+    <input class="form-control" type="text" disabled value="<%= level.name %>">
+
+    <label class="form-label" for="name">Nouveau nom du niveau</label>
+    <input class="form-control" type="text" name="name" id="name" value="<%= level.name %>" required>
+
+    <label class="form-label" for="power">Difficulté du niveau</label>
+    <input class="form-control" type="number" name="power" id="power" value="<%= level.power %>" required>
+
+    <input class="btn btn-primary mt-3" type="submit" value="Modifier le niveau">
+  </form>
+
+</main>
+
+<%- include('./partials/footer') %>

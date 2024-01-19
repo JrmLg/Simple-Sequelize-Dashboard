@@ -1,0 +1,50 @@
+<%- include('./partials/header') %>
+
+<main class="container py-4">
+
+  <h1 class="text-center m-2"><%= quiz.title %></h1>
+
+  <h2 class="text-center m-2"><%= quiz.description %></h2>
+
+  <h2 class="small text-end">Par <%= quiz.author.firstname + ' ' + quiz.author.lastname %></h2>
+
+  <h2 class="small text-end">Date de création : Le <%= quiz.formated_created_date %></h2>
+
+  <h3>Thèmes</h3>
+  <ul class="mb-4 p-0">
+    <% for (const tag of quiz.tags) { %>
+      <a href="/tags">
+          <li class="badge bg-primary"><%= tag.name %></li>
+      </a>
+    <% } %>
+  </ul>
+
+  <h3>Questions</h3>
+    <% for (question of quiz.questions) { %>
+      <% console.log(question) %>
+      <span class="badge bg-info"><%= question.level.name %></span>
+
+      <p class="fw-bold mb-1"><%= question.description %></p>
+
+      <div class="mb-3 ms-2">
+
+        <!-- Réponse -->
+        <% for (proposition of question.propositions) { %>
+          <div>
+            <input type="radio" id="<%= proposition.id %>" name="<%= question.id  %>" value="<%= proposition.id %>">
+            <label for="<%= proposition.id %>"><%= proposition.description %></label>
+          </div>
+        <% } %>
+
+
+      </div>
+
+      <p class="fst-italic text-secondary"><%= question.anecdote %></p>
+
+    <% } %>
+
+
+  <button class="d-block mx-auto btn btn-primary mb-4">Envoyer</button>
+</main>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,43 @@
+<%- include('./partials/header') %>
+
+<main class="container py-4">
+
+  <!-- Astuce, on se affiche les données récupérées dans la view AVANT d'itérer dessus -->
+  <!-- Juste pour voir, après on efface ! -->
+  <!-- Remplacer # par = -->
+  <%# JSON.stringify(levels) %>
+
+  <h1 class="my-3">Tous les niveaux</h1>
+
+  <ul>
+
+    <% levels.forEach(level => { %>
+
+      <li>
+        <span class="badge bg-info p-3 mb-1"><%= level.name + ` [${level.power}]` %></span>
+        <a class="btn btn-outline-info py-0 px-1 ms-3 fs-6 text-decoration-none" href="/levels/edit/<%= level.id %>">ÉDITER</a>
+        <form class="d-inline" action="/levels/delete/<%= level.id %>" method="POST">
+          <input class="btn btn-outline-danger py-0 px-1 ms-3 fs-6" type="submit" value="SUPPRIMER">
+        </form>
+      </li>
+
+    <% }) %>
+
+  </ul>
+
+  <h2 class="my-4">Ajouter un niveau</h2>
+
+  <form class="mb-5" action="/levels/add" method="POST">
+    <label class="form-label" for="levelName">Nom du niveau</label>
+    <input class="form-control" type="text" name="levelName" id="levelName" value="<%= locals.levelName %>" required>
+    <% if (locals.error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+    <input class="btn btn-primary mt-3" type="submit" value="Ajouter le niveau">
+  </form>
+
+</main>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,26 @@
+<%- include('./partials/header') %>
+
+<main class="container py-4">
+
+  <h1>Se connecter</h1>
+
+  <!-- Toast en cas d'erreur  -->
+  <% if (locals.error) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+
+  <form action="#" method="POST">
+    <label class="form-label h4" for="email">Email</label>
+    <input class="form-control mb-4" type="email" id="email" name="email" placeholder="email@domain.com" value="<%= locals.email %>" autofocus>
+
+    <label class="form-label h4" for="password">Mot de passe</label>
+    <input class="form-control" type="password" id="password" name="password" placeholder="*********" value="<%= locals.password %>">
+
+    <input class="btn btn-primary d-block my-4 mx-auto" type="submit" value="Se connecter">
+  </form>
+
+</main>
+
+<%- include('./partials/footer') %>
