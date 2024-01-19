@@ -10,6 +10,10 @@ app.set('views', './test/project1/app/views')
 
 // app.use(express.urlencoded({ extended: true }))
 
+app.use((req, res, next) => {
+  console.log(req.url)
+  next()
+})
 // Statically served files
 app.use(express.static(path.join(__dirname, './public')))
 
