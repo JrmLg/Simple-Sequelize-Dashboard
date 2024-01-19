@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const sequelize = require('./sequelizeInstance');
+const sequelize = require('../jest-test/test-models/sequelizeInstance');
 const useSimpleDash = require('../../index');
 
 app.set('view engine', 'ejs');
 app.set('views', './test/project1/app/views');
 
-// app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
 // Statically served files
 app.use(express.static(path.join(__dirname, './public')));
@@ -25,4 +25,4 @@ app.get('/', (req, res) => {
   res.render('homePage', { adminHomePageUrl });
 });
 
-module.exports = app;
+module.exports = { app, adminHomePageUrl };
