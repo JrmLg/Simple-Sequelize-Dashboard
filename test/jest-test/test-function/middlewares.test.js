@@ -27,7 +27,7 @@ jest.mock('../../../lib/middlewares/removeAdminViewSettings', () =>
   jest.fn((req, res, next) => next())
 );
 
-describe('Middleware Test', () => {
+describe('set/remove AdminViewSettings', () => {
   let app;
 
   beforeEach(() => {
@@ -46,7 +46,7 @@ describe('Middleware Test', () => {
     jest.clearAllMocks();
   });
 
-  describe('Middleware Test', () => {
+  describe('setAdminViewSettings test', () => {
     let app, originalSettings;
 
     beforeEach(() => {
@@ -86,7 +86,6 @@ describe('Middleware Test', () => {
     test('should call removeAdminViewSettings on request close', async () => {
       const response = await request(app).get('/');
 
-      // Simuler la fermeture de la requête
       response.req.emit('close');
       expect(removeAdminViewSettings).toHaveBeenCalled();
     });
