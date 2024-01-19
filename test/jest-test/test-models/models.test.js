@@ -62,12 +62,58 @@ describe('Testing AdminUser - AdminRole association', () => {
     });
 
     const role = await adminRole.create({ name: 'admin' });
-
     await user.addRole(role);
-
     const userRoles = await user.getRoles();
 
     expect(userRoles[0].name).toBe('admin');
+  });
+});
+
+describe('Testing AdminRole - AdminPermission association', () => {
+  test('adminRole - adminPermission association test', async () => {
+    const role = await adminRole.create({ name: 'admin' });
+    const permission = await adminPermission.create({
+      permission: 'read',
+      tableName: 'simple-dash-test-table-association',
+    });
+    await role.addPermission(permission);
+    const rolePermissions = await role.getPermissions();
+
+    expect(rolePermissions[0].permission).toBe('read');
+    expect(rolePermissions[0].tableName).toBe(
+      'simple-dash-test-table-association'
+    );
+  });
+});
+
+describe('Testing triple association', () => {
+  test('adminUser - adminRole - adminPermission association test', async () => {
+    const user = await adminUser.create({
+      firstname: 'Julie',
+      lastname: 'Doe',
+      email: 'Julie@Doe.io',
+      password: '1234',
+      isSuperAdmin: true,
+    });
+
+    const role = await adminRole.create({ name: 'admin' });
+    const permission = await adminPermission.create({
+      permission: 'read',
+      tableName: 'simple-dash-test-table-triple-association',
+    });
+    await user.addRole(role);
+    await role.addPermission(permission);
+    const userRoles = await user.getRoles();
+    const rolePermissions = await role.getPermissions();
+
+    expect(userRoles[0].name).toBe('admin');
+    expect(rolePermissions[0].permission).toBe('read');
+    expect(rolePermissions[0].tableName).toBe(
+      'simple-dash-test-table-triple-association'
+    );
+    console.log(userRoles[0].name);
+    console.log(rolePermissions[0].permission);
+    console.log(rolePermissions[0].tableName);
   });
 });
 
