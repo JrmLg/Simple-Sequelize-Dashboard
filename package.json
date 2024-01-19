@@ -1,12 +1,13 @@
 {
   "name": "simple-sequelize-dashboard",
   "version": "1.0.0",
-  "description": "Simple-Sequelize-Dashboard est un middleware qui permet d'administrer un site rapidement avec un déploiement par NPM.",
+  "description": "Simple-Sequelize-Dashboard is a middleware that allows for quick administration of a website with NPM deployment.",
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "project1": "nodemon ./test/project1/index.js"
+    "project1": "nodemon ./test/project1/index.js",
+    "routeTest": "jest test/jest-test/routeTest.test.js --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,9 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-promise": "^6.1.1",
-    "nodemon": "^3.0.3"
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.3",
+    "supertest": "^6.3.4"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -28,6 +31,6 @@
     "sqlite3": "^5.1.7"
   },
   "directories": {
-    "test": "test"
+    "test": "test/jest-test/"
   }
 }
