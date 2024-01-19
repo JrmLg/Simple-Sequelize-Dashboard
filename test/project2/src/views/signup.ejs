@@ -1,0 +1,36 @@
+<%- include('./partials/header') %>
+
+<main class="container py-4">
+
+  <h1>Inscription</h1>
+
+  <!-- Toast en cas d'erreur -->
+  <% if (locals.error) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= error %>
+    </div>
+  <% } %>
+
+
+  <form action="#" method="POST">
+    <label class="form-label h4" for="firstname">Prénom</label>
+    <input class="form-control mb-4" type="firstname" id="firstname" name="firstname" placeholder="Prénom" value="<%= locals.firstname%>">
+
+    <label class="form-label h4" for="lastname">Nom</label>
+    <input class="form-control mb-4" type="lastname" id="lastname" name="lastname" placeholder="Nom" value="<%= locals.lastname%>">
+
+    <label class="form-label h4" for="email">Email</label>
+    <input class="form-control mb-4" type="email" id="email" name="email" placeholder="email@domain.com" value="<%= locals.email %>">
+
+    <label class="form-label h4" for="password">Mot de passe</label>
+    <input class="form-control" type="password" id="password" name="password" placeholder="*********" value="<%= locals.password %>">
+
+    <label class="form-label h4" for="confirmation">Mot de passe</label>
+    <input class="form-control" type="password" id="confirmation" name="confirmation" placeholder="*********" value="<%= locals.confirmation %>">
+    
+    <input class="btn btn-primary d-block my-4 mx-auto" type="submit" value="S'inscrire">
+  </form>
+
+</main>
+
+<%- include('./partials/footer') %>

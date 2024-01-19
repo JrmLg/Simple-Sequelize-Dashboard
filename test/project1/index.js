@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 const path = require('path')
 
-const sequelize = require('./app/sequelize')
-const useSimpleDash = require('../../index')
+const sequelize = require('./app/sequelize/sequelize')
+const useSimpleDash = require('../../lib/useSimpleDash')
 
 app.set('view engine', 'ejs')
 app.set('views', './test/project1/app/views')
@@ -14,10 +14,11 @@ app.use((req, res, next) => {
   console.log(req.url)
   next()
 })
+
 // Statically served files
 app.use(express.static(path.join(__dirname, './public')))
 
-const adminHomePageUrl = '/administration'
+const adminHomePageUrl = '/admin'
 
 app.use(
   useSimpleDash(sequelize, {

@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Env variables
+.env
+
+# Settings VSCode
+.vscode/
+
+# Fichiers cachés MacOS
+.DS_Store
