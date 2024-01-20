@@ -21,15 +21,10 @@ app.set('trust proxy', 1)
 
 app.use(cookieParser())
 
+app.use(useSimpleDash(sequelize))
+
 app.use(session())
-app.use(useSimpleDash(sequelize)) // Todo (if possible) fix order middleware constraint
-
 app.use(loadSessionUserInLocals())
-
-app.use((req, res, next) => {
-  console.log('Application session : ', req.session)
-  next()
-})
 
 // Servir statiquement le contenu du dossier public
 app.use(express.static('./public'))
