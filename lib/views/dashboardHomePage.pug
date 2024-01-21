@@ -1,4 +1,8 @@
-html
-  include ./partials/head
-  include ./partials/navbar
-  include ./partials/sidebar
+extends layouts/main.pug
+
+block styles
+  link(rel="stylesheet", href="/admin/css/dashboardStyle.css", type="text/css", media="all")
+
+block content
+  p Je suis le contenu du dashboard
+  include partials/modale

@@ -1,15 +1,15 @@
-button.btn.btn-primary(type="button", data-bs-toggle="modal", data-bs-target="#loginSignupModal")
+button(class="btn btn-primary" type="button", data-bs-toggle="modal", data-bs-target="#loginSignupModal")
   | Launch demo modal
 
-div.modal.fade(id="loginSignupModal", tabindex="-1", role="dialog", aria-labelledby="modalLabel", aria-hidden="true")
-  div.modal-dialog(role="document")
-    div.modal-content
-      div.modal-header
-        h5.modal-title#modalLabel Modal title
-        button.close(type="button", data-bs-dismiss="modal", aria-label="Close")
+div(class="modal fade", id="loginSignupModal", tabindex="-1", role="dialog", aria-labelledby="modalLabel", aria-hidden="true")
+  div(class="modal-dialog", role="document")
+    div(class="modal-content")
+      div(class="modal-header")
+        h5(class="modal-title", id="modalLabel") Modal title
+        button(class="close", type="button", data-bs-dismiss="modal", aria-label="Close")
           span(aria-hidden="true") &times;
-      div.modal-body
+      div(class="modal-body")
         | Modal body text goes here.
-      div.modal-footer
-        a.btn.btn-primary(href="/login") button 1
-        a.btn.btn-secondary(href="/signup") Button 2
+      div(class="modal-footer")
+        a(class="btn btn-primary", href="/login") button 1
+        a(class="btn btn-secondary", href="/signup") Button 2
