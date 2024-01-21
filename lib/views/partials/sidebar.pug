@@ -21,5 +21,6 @@ div(class="d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start c
     +navLink("Permissions", "/permissions", false)
 
     +navLink("Models", "/models", true, Object.keys(models).length)
+
     each [modelName, model] of Object.entries(locals.models)
       +navLink(modelName, "/models/" + modelName, false)
