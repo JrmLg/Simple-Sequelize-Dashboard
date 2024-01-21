@@ -4,58 +4,28 @@ block styles
   +adminCss("/css/dashboardStyle.css")
 
 
-block content
-  
-  <button type="button" class="btn btn-primary m-5">ADD USER</button>
-  
-  <div class="container"> 
-    <table class="table table-bordered table-hover">
-      <thead>
-        <tr>
-        <th scope="col">Lastname</th>
-        <th scope="col">Firstname</th>
-        <th scope="col">Email</th>
-        <th scope="col">Is superAdmin</th>
-        <th scope="col">Change</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>LEGO</td>
-          <td>Jérome</td>
-          <td>lego-jerome@gmail.com</td>
-          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
-          <td><button type="button" class="btn btn-primary">EDIT</button></td>
-        </tr>
-        <tr>
-          <td>DUCOURNAU</td>
-          <td>Théo</td>
-          <td>theo.ducournau@gmail.com</td>
-          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
-          <td><button type="button" class="btn btn-primary">EDIT</button></td>
-        </tr>
-        <tr>
-          <td>FOUCHE</td>
-          <td>Fred</td>
-          <td>fouche.fred@gmail.com</td>
-          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
-          <td><button type="button" class="btn btn-primary">EDIT</button></td>
-        </tr>
-        <tr>
-          <td>HERNANDEZ</td>
-          <td>Romain</td>
-          <td>romain.hernandez@gmail.com</td>
-          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
-          <td><button type="button" class="btn btn-primary">EDIT</button></td>
-        </tr>
-        <tr>
-          <td>VLADISKI</td>
-          <td>Ives</td>
-          <td>ives.vladiski@gmail.com</td>
-          <td>Admin <i class="bi bi-award"></i></td>
-          <td><button type="button" class="btn btn-primary">EDIT</button></td>
-        </tr>
-      </tbody>  
-    </table>
-  </div>
 
-  //- include partials/modale
+block content
+
+  button(type="button", class="btn btn-primary m-5") ADD USER
+
+  div(class="container")
+    table(class="table table-bordered table-hover")
+      thead
+        tr
+          th(scope="col") Lastname
+          th(scope="col") Firstname
+          th(scope="col") Email
+          th(scope="col") Is superAdmin
+          th(scope="col") Change
+
+      tbody
+        each user in users
+          tr
+            td #{user.lastname}
+            td #{user.firstname}
+            td #{user.email}
+            td #{user.isSuperAdmin ? 'SuperAdmin' : 'Admin'}
+              i(class="bi bi-award" + (user.isSuperAdmin ? '-fill' : ''))
+            td
+              button(class="btn btn-primary", type="button", data-bs-tooggle="") EDIT
