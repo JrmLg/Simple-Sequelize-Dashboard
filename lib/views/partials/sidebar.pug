@@ -1,3 +1,12 @@
+mixin navLink(text, link, isActive, notifCount)
+  li(class="nav-item")
+    a(class="nav-link", class=isActive ? 'active' : '', href=link)
+      | #{text}
+      if notifCount
+        i(class="bi bi-" + notifCount + "-circle m-2")
+
+
+
 div(class="d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start custom-width mh-100")
   a(href="/", class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none")
     svg(class="bi me-2", width="40", height="32")
@@ -5,17 +14,12 @@ div(class="d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start c
     span.fs-4 Sidebar
   hr
   ul(class="nav nav-pills flex-column mb-auto")
-    li(class="nav-item")
-      a(href="#", class="nav-link active", aria-current="page") Admin
-    li
-      a(href="#", class="nav-link") Users
-    li
-      a(href="#", class="nav-link") Roles
-    li
-      a(href="#", class="nav-link") Permissions
-    li
-      a(href="#", class="nav-link active") Models
 
+    +navLink("Admin", "/admin", true, 3)
+    +navLink("Users", "/users", false)
+    +navLink("Roles", "/roles", false)
+    +navLink("Permissions", "/permissions", false)
+
+    +navLink("Models", "/models", true, Object.keys(models).length)
     each [modelName, model] of Object.entries(locals.models)
-      li
-        a(href="#", class="nav-link link-dark") #{modelName}
+      +navLink(modelName, "/models/" + modelName, false)

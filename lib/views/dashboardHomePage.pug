@@ -1,8 +1,15 @@
 extends layouts/main.pug
 
 block styles
-  link(rel="stylesheet", href="/admin/css/dashboardStyle.css", type="text/css", media="all")
+  +adminCss("/css/dashboardStyle.css")
 
 block content
-  p Je suis le contenu du dashboard
-  include partials/modale
+  - const showModale = viewCount % 2
+
+  p(class="bg-secondary",
+    class=showModale ? "text-primary" : ""
+    ) Je suis le contenu du dashboard
+  p #{viewCount}
+
+  if showModale
+    include partials/modale

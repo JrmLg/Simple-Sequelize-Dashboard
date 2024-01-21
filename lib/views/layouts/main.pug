@@ -1,16 +1,6 @@
+doctype html
 html
-  head
-    meta(charset="UTF-8")
-    title Titre de la page
-    meta(name="viewport", content="width=device-width, initial-scale=1")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    block meta
-
-    link(rel="stylesheet", type="text/css", href="/admin/css/bootstrap.min.css")
-    block styles
-
-    script(src="/admin/js/bootstrap.bundle.min.js", type="module", defer)
-    block scripts
+  include /partials/head
 
   body
     include /partials/navbar
