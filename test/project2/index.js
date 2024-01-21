@@ -21,7 +21,11 @@ app.set('trust proxy', 1)
 
 app.use(cookieParser())
 
-app.use(useSimpleDash(sequelize))
+app.use(
+  useSimpleDash(sequelize, {
+    baseUrl: '/administration',
+  }),
+)
 
 app.use(session())
 app.use(loadSessionUserInLocals())
