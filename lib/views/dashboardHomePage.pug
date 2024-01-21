@@ -5,7 +5,57 @@ block styles
 
 
 block content
-  p salut
-  p Je suis le contenu du dashboard
+  
+  <button type="button" class="btn btn-primary m-5">ADD USER</button>
+  
+  <div class="container"> 
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+        <th scope="col">Lastname</th>
+        <th scope="col">Firstname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Is superAdmin</th>
+        <th scope="col">Change</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>LEGO</td>
+          <td>Jérome</td>
+          <td>lego-jerome@gmail.com</td>
+          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
+          <td><button type="button" class="btn btn-primary">EDIT</button></td>
+        </tr>
+        <tr>
+          <td>DUCOURNAU</td>
+          <td>Théo</td>
+          <td>theo.ducournau@gmail.com</td>
+          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
+          <td><button type="button" class="btn btn-primary">EDIT</button></td>
+        </tr>
+        <tr>
+          <td>FOUCHE</td>
+          <td>Fred</td>
+          <td>fouche.fred@gmail.com</td>
+          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
+          <td><button type="button" class="btn btn-primary">EDIT</button></td>
+        </tr>
+        <tr>
+          <td>HERNANDEZ</td>
+          <td>Romain</td>
+          <td>romain.hernandez@gmail.com</td>
+          <td>SuperAdmin <i class="bi bi-award-fill"></i></td>
+          <td><button type="button" class="btn btn-primary">EDIT</button></td>
+        </tr>
+        <tr>
+          <td>VLADISKI</td>
+          <td>Ives</td>
+          <td>ives.vladiski@gmail.com</td>
+          <td>Admin <i class="bi bi-award"></i></td>
+          <td><button type="button" class="btn btn-primary">EDIT</button></td>
+        </tr>
+      </tbody>  
+    </table>
+  </div>
 
-  include partials/modale
+  //- include partials/modale

@@ -6,3 +6,7 @@ body {
 .custom-border-bottom {
   border-bottom: 1px solid #a9a9a9;
 }
+
+.container table {
+  border: 2px solid black;
+}
