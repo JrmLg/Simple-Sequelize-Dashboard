@@ -1,36 +1,21 @@
-div.d-flex.flex-row.justify-content-start.h-100
-  div.d-flex.flex-column.flex-shrink-0.p-3.bg-light.justify-content-start.custom-width.mh-100
-    a(href="/", class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none")
-      svg.bi.me-2(width="40", height="32")
-        use(xlink:href="#bootstrap")
-      span.fs-4 Sidebar
-    hr
-    ul.nav.nav-pills.flex-column.mb-auto
-      li.nav-item
-        a(href="#", class="nav-link active", aria-current="page")
-          svg.bi.me-2(width="16", height="16")
-            use(xlink:href="#home")
-          | Admin
+div(class="d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start custom-width mh-100")
+  a(href="/", class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none")
+    svg(class="bi me-2", width="40", height="32")
+    use(xlink:href="#bootstrap")
+    span.fs-4 Sidebar
+  hr
+  ul(class="nav nav-pills flex-column mb-auto")
+    li(class="nav-item")
+      a(href="#", class="nav-link active", aria-current="page") Admin
+    li
+      a(href="#", class="nav-link") Users
+    li
+      a(href="#", class="nav-link") Roles
+    li
+      a(href="#", class="nav-link") Permissions
+    li
+      a(href="#", class="nav-link active") Models
+
+    each [modelName, model] of Object.entries(locals.models)
       li
-        a(href="#", class="nav-link")
-          svg.bi.me-2(width="16", height="16")
-            use(xlink:href="#speedometer2")
-          | Users
-      li
-        a(href="#", class="nav-link")
-          svg.bi.me-2(width="16", height="16") use(xlink:href="#speedometer2")
-          | Roles
-      li
-        a(href="#", class="nav-link")
-          svg.bi.me-2(width="16", height="16") use(xlink:href="#speedometer2")
-          | Permissions
-      li
-        a(href="#", class="nav-link active")
-          svg.bi.me-2(width="16", height="16") use(xlink:href="#speedometer2")
-          | Models
-      each [modelName, model] of Object.entries(locals.models)
-        li
-          a(href="#", class="nav-link link-dark")
-            svg.bi.me-2(width="16", height="16")
-              use(xlink:href="#grid")
-            | #{modelName}
+        a(href="#", class="nav-link link-dark") #{modelName}
