@@ -24,11 +24,6 @@ app.use(cookieParser())
 app.use(useSimpleDash(sequelize))
 app.use(session())
 
-app.use((req, res, next) => {
-  console.log(req.session)
-  next()
-})
-
 app.use(loadSessionUserInLocals())
 
 // Servir statiquement le contenu du dossier public
