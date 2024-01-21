@@ -1,0 +1,28 @@
+mixin modalRecordEditor(modalInfo, record)
+  div(class="modal fade", id=modalInfo.id, tabindex="-1", role="dialog", aria-labelledby="modalLabel", aria-hidden="true")
+    div(class="modal-dialog", role="document")
+      div(class="modal-content")
+
+        div(class="modal-header")
+          h5(class="modal-title", id="modalLabel") #{modalInfo.title || "Modal title"}
+          button(class="close", type="button", data-bs-dismiss="modal", aria-label="Close")
+            span(aria-hidden="true") &times;
+
+        div(class="modal-body")
+
+          form(action="/", method="post")
+
+            each [key, value] of Object.entries(record)
+              div(class="form-group my-3")
+                label(for=key) #{key}
+                input(class="form-control", type="text", name=key, value=value)
+
+        div(class="modal-footer")
+          a(
+            class="btn btn-primary",
+            href= modalInfo.updateUrl || '#'
+            ) Valider
+          a(
+            class="btn btn-danger",
+            href=modalInfo.deleteUrl || '#'
+            ) Supprimer
