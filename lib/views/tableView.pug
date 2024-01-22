@@ -1,0 +1,38 @@
+extends layouts/main
+
+include /mixins/modalRecordEditor
+
+block styles
+  +adminCss("/css/dashboardStyle.css")
+
+
+block content
+
+  div(class="d-flex flex-row justify-content-between p-2 px-3 shadow-sm")
+    h1(class="fs-4 my-auto") #{tableName}
+    button(type="button", class="btn btn-primary mx-3") New #{tableName}
+
+  table(class="table table-hover border-top")
+    thead(class="table-light")
+
+      tr
+        each field of Object.keys(records[0])
+          th(scope="col") #{field}
+        th(scope="col") Actions
+
+    tbody
+      each record of records
+        tr
+          each [field, value] of Object.entries(record)
+            td #{value}
+
+          td
+            button(
+              class="btn btn-primary", type="button",
+              data-bs-toggle="modal", data-bs-target=("#editor" + record.id)
+              ) EDIT
+
+            +modalRecordEditor({
+              id: "editor" + record.id,
+              title: 'Edit ' + tableName,
+              }, record)
