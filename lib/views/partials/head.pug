@@ -1,0 +1,28 @@
+mixin css(href)
+  link(rel="stylesheet", type="text/css", href=href)
+
+mixin js(src)
+  script(src=src, type="module", defer)
+
+mixin adminCss(href)
+  link(rel="stylesheet", type="text/css", href= baseUrl + href)
+
+mixin adminJs(src)
+  script(src= baseUrl + src, type="module", defer)
+
+
+
+
+head
+  meta(charset="UTF-8")
+  title Titre de la page
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+  meta(http-equiv="X-UA-Compatible", content=jie=edgej)
+  block meta
+
+  +adminCss('/css/bootstrap.min.css')
+  +adminCss('/font/bootstrap-icons.min.css')
+  block styles
+
+  +adminJs("/js/bootstrap.bundle.min.js")
+  block scripts

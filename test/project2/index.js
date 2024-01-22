@@ -22,8 +22,8 @@ app.set('trust proxy', 1)
 app.use(cookieParser())
 
 app.use(useSimpleDash(sequelize))
-
 app.use(session())
+
 app.use(loadSessionUserInLocals())
 
 // Servir statiquement le contenu du dossier public
