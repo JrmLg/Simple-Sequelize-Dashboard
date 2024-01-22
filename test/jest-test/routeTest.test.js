@@ -2,6 +2,7 @@ const request = require('supertest');
 const {
   app,
   adminHomePageUrl,
+  closeDatabaseConnection,
 } = require('../../test/jest-test/expressInstance');
 const initDb = require('../../test/jest-test/test-models/sequelizeTestInitDb');
 const testUser = require('../../test/jest-test/test-models/models');
@@ -58,4 +59,8 @@ describe(`Test get ${adminHomePageUrl}/superAdmin/user/create`, () => {
     );
     expect(response.statusCode).toBe(200);
   });
+});
+
+afterAll(async () => {
+  await closeDatabaseConnection();
 });
