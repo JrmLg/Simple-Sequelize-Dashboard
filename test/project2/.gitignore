@@ -1,5 +1,6 @@
 # Node modules
 node_modules/
+**/sqlite.db
 
 # Env variables
 .env

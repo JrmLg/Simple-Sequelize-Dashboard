@@ -9,6 +9,7 @@
     "routeTest": "jest test/jest-test/routeTest.test.js --detectOpenHandles",
     "middlewaresTest": "jest test/jest-test/test-function/middlewares.test.js --detectOpenHandles",
     "modelsTest": "jest test/jest-test/test-models/models.test.js --detectOpenHandles",
+    "project1": "nodemon ./test/project1/index.js",
     "project2": "nodemon ./test/project2/index.js"
   },
   "keywords": [],

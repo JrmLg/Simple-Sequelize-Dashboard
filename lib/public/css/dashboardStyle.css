@@ -2,17 +2,3 @@ html,
 body {
   height: 100%;
 }
-
-.custom-border-bottom {
-  border-bottom: 1px solid #a9a9a9;
-}
-
-.custom-width {}
-
-.custom-navbar {
-  flex: 0 0 auto;
-}
-
-.custom-sidebar {
-  flex: 1;
-}
