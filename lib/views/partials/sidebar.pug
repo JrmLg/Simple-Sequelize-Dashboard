@@ -1,25 +1,24 @@
-mixin navLink(text, link, isActive, notifCount)
-  li(class="nav-item")
-    a(class="nav-link", class=isActive ? 'active' : '', href=link)
-      | #{text}
-      if notifCount
-        i(class="bi bi-" + notifCount + "-circle m-2")
-
-
-
 div(
     class="d-flex flex-column flex-shrink-0 p-3 justify-content-start mh-100",
     class="border border-left-0 border-top-0 border-bottom-0"
   )
-  ul(class="nav nav-pills flex-column mb-auto")
 
-    +navLink("Admin", "/admin", true, 3)
-    +navLink("Users", "/users", false)
-    +navLink("Roles", "/roles", false)
-    hr
-    +navLink("Permissions", "/permissions", false)
+  each category of sidebar.categories
+    button(
+      class="btn btn-primary",
+      type="button",
+      data-bs-toggle="collapse",
+      data-bs-target="#collapse" + category.name,
+      aria-expanded="true",
+      aria-controls="collapse" + category.name
+      )
+      | #{category.name}
+      i(class="bi bi-" + category.items.length + "-circle m-2")
 
-    +navLink("Models", "/models", true, Object.keys(models).length)
 
-    each [modelName, model] of Object.entries(locals.models)
-      +navLink(modelName, "/models/" + modelName, false)
+    div(class="collapse show", id="collapse" + category.name)
+      ul(class="nav nav-pills flex-column")
+        each item of category.items
+          li(class="nav-item")
+            a(class="nav-link", class=item.isActive ? 'active' : '', href=item.url)
+              | #{item.name}
