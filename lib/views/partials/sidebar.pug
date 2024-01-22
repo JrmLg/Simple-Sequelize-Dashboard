@@ -7,17 +7,16 @@ mixin navLink(text, link, isActive, notifCount)
 
 
 
-div(class="d-flex flex-column flex-shrink-0 p-3 bg-light justify-content-start custom-width mh-100")
-  a(href="/", class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none")
-    svg(class="bi me-2", width="40", height="32")
-    use(xlink:href="#bootstrap")
-    span.fs-4 Sidebar
-  hr
+div(
+    class="d-flex flex-column flex-shrink-0 p-3 justify-content-start mh-100",
+    class="border border-left-0 border-top-0 border-bottom-0"
+  )
   ul(class="nav nav-pills flex-column mb-auto")
 
     +navLink("Admin", "/admin", true, 3)
     +navLink("Users", "/users", false)
     +navLink("Roles", "/roles", false)
+    hr
     +navLink("Permissions", "/permissions", false)
 
     +navLink("Models", "/models", true, Object.keys(models).length)
