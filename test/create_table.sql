@@ -1,7 +1,3 @@
--- Active: 1705945581030@@127.0.0.1@5432@simple_dashboard
--- Création du type ENUM pour les permissions
-CREATE TYPE permission_enum AS ENUM ('create', 'read', 'update', 'delete');
-CREATE TYPE admin_role_enum AS ENUM ('admin', 'superadmin');
 
 -- Création de la table adminPermission
 CREATE TABLE IF NOT EXISTS adminPermission (
@@ -17,11 +13,10 @@ CREATE TABLE IF NOT EXISTS adminPermission (
 -- Création de la table adminRole
 CREATE TABLE IF NOT EXISTS adminRole (
     id SERIAL PRIMARY KEY,
-    name admin_role_enum NOT NULL,
+    name TEXT NOT NULL,
     deletedAt DATE,
     createdAt DATE NOT NULL DEFAULT NOW(),
     updatedAt DATE,
-    CONSTRAINT checkName CHECK (name IN ('admin', 'superadmin'))
 );
 
 -- Création de la table adminUser
