@@ -11,7 +11,8 @@
     "modelsTest": "jest test/jest-test/test-models/models.test.js --detectOpenHandles",
     "project1": "nodemon ./test/project1/index.js",
     "project2": "nodemon ./test/project2/index.js",
-    "sync": "browser-sync start --proxy localhost:3000 --files='lib/**/*' --port 8080"
+    "sync": "browser-sync start --proxy localhost:3000 --files='lib/**/*' --port 8080",
+    "Project2Sync": "browser-sync start --proxy localhost:3001 --files='test/project2/' --port 8081"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,23 @@
+include partials/head.pug
+body
+    .container.mt-5
+        .row.justify-content-center.align-items-center.min-vh-100
+            .col-md-6.col-lg-4
+                .card.shadow-sm
+                    .card-body
+                        h2.card-title.text-center.mb-4 Login
+                        form(action="/login", method="POST")
+                            .mb-3
+                                label.form-label(for="email")
+                                input#email.form-control(type="email", name="email", placeholder="Enter email", required)
+                                .form-text.text-muted.mx-1 We'll never share your email with anyone else.
+                            .mb-3
+                                label.form-label(for="password")
+                                input#password.form-control(type="password", name="password", placeholder="Password", required)
+                            .d-grid.gap-2
+                                button.btn.btn-primary.btn-lg(type="submit") Login
+                            .mt-3.text-center
+                                a(href="/forgot-password") Forgot password?
+            footer.mt-5
+                .border-top.text-center.pt-3
+                    a.text-muted.small(href="https://github.com/JrmLg/Simple-Sequelize-Dashboard") Simple-Sequelize-Dashboard
