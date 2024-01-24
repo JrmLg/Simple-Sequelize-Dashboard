@@ -8,15 +8,15 @@ div(
       class="btn btn-primary",
       type="button",
       data-bs-toggle="collapse",
-      data-bs-target="#collapse" + category.name,
+      data-bs-target="#collapse" + category.name.replace(/\s/g, '')
       aria-expanded="true",
-      aria-controls="collapse" + category.name
+      aria-controls="collapse" + category.name.replace(/\s/g, '')
       )
       | #{category.name}
       i(class="bi bi-" + category.items.length + "-circle m-2")
 
 
-    div(class="collapse show", id="collapse" + category.name)
+    div(class="collapse show", id="collapse" + category.name.replace(/\s/g, ''))
       ul(class="nav nav-pills flex-column")
         each item of category.items
           li(class="nav-item")
