@@ -21,4 +21,6 @@ div(
         each item of category.items
           li(class="nav-item")
             a(class="nav-link", class=item.isActive ? 'active' : '', href=item.url)
+              if item.iconClass
+                i(class="bi bi-" + item.iconClass + " m-2")
               | #{item.name}

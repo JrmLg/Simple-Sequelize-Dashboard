@@ -3,7 +3,10 @@ extends layouts/main
 include /mixins/modalRecordEditor
 
 block styles
-  +adminCss("/css/dashboardStyle.css")
+  +sdCss("/css/tableView.css")
+
+block scripts
+  +sdJs("/js/tableView.js")
 
 
 block content
@@ -35,6 +38,7 @@ block content
               class="btn btn-primary", type="button",
               data-bs-toggle="modal", data-bs-target=("#editor" + record.id)
               ) EDIT
+
 
             +modalRecordEditor({
               id: "editor" + record.id,
