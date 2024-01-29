@@ -1,3 +1,3 @@
-const useSimpleDash = require('./lib/server/useSimpleDash')
+const useSimpleDash = require('./lib/server/index')
 
 module.exports = useSimpleDash
