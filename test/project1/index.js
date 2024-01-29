@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 
 const sequelize = require('./app/sequelize')
-const useSimpleDash = require('../../lib/useSimpleDash')
+const useSimpleDash = require('../../index')
 
 app.set('view engine', 'ejs')
 app.set('views', './test/project1/app/views')

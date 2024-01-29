@@ -1,5 +1,5 @@
 const sequelize = require('./src/models/sequelize/sequelize-client')
-const useSimpleDash = require('../../lib/useSimpleDash')
+const useSimpleDash = require('../../index')
 
 // Importer les dépendances
 const express = require('express')
