@@ -2,7 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "private": true,
-  "homepage": "/admin",
+  "homepage": "/admin/",
   "proxy": "http://localhost:3000",
   "dependencies": {
     "@emotion/react": "^11.11.3",

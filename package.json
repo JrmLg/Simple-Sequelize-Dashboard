@@ -8,7 +8,7 @@
     "test": "test"
   },
   "devDependencies": {
-    "browser-sync": "^3.0.2",
+    "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -19,10 +19,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "front": "cd lib/client && npm start",
+    "build": "cd lib/client && npm run build",
+    "devFront": "cd lib/client && npm start",
+    "dev": "npx concurrently --names \"Express,React\" --prefix-colors \"#33712E,#52A0E5\" --kill-others \"npm run project2\" \"npm run devFront\"",
     "project1": "nodemon ./test/project1/index.js",
-    "project2": "nodemon ./test/project2/index.js",
-    "sync": "browser-sync start --proxy localhost:3000 --files='lib/**/*' --port 8080"
+    "project2": "nodemon ./test/project2/index.js"
   },
   "keywords": [],
   "author": "",

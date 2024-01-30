@@ -6,10 +6,13 @@ import Box from '@mui/material/Box'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import Alert from '@mui/material/Alert'
 
-import backend from '../../utils/backend'
+import backend from '../utils/backend'
 
-export default function LoginPage() {
+export default function LoginPage({ onLogin }) {
+  const [error, setError] = React.useState(null)
+
   const handleSubmit = async (event) => {
     event.preventDefault()
 
@@ -17,7 +20,12 @@ export default function LoginPage() {
     data = Object.fromEntries(data.entries())
 
     const res = await backend.post('./auth/login', data)
-    console.log('res', res)
+    if (res.error) {
+      setError(res.error)
+    } else {
+      setError(null)
+      onLogin(res.data.admin)
+    }
   }
 
   return (
@@ -37,6 +45,7 @@ export default function LoginPage() {
           Simple Dashboard connexion
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          {error && <Alert severity="error">{error}</Alert>}
           <TextField margin="normal" required fullWidth id="email" label="Email Address" name="email" autoComplete="email" autoFocus />
           <TextField
             margin="normal"

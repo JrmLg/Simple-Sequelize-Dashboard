@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles/index.css'
-import HomePage from './containers/homePage/homePage'
+import HomePage from './containers/homePage'
 import reportWebVitals from './reportWebVitals'
 
 // async function loadRecords() {

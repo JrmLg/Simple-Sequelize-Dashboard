@@ -3,7 +3,11 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 
+import { useAuth } from '../contexts/AuthContext'
+
 export default function Navbar() {
+  const { admin, isAuth } = useAuth()
+
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -12,14 +16,16 @@ export default function Navbar() {
             Dashboard
           </Typography>
 
-          <Box>
-            <Typography variant="h6" noWrap component="div">
-              Jérôme LEGO
-            </Typography>
-            <Typography variant="h8" noWrap textAlign="right" component="div">
-              Super Admin
-            </Typography>
-          </Box>
+          {isAuth && (
+            <Box>
+              <Typography variant="h6" noWrap component="div">
+                {admin.firstname} {admin.lastname}
+              </Typography>
+              <Typography variant="h8" noWrap textAlign="right" component="div">
+                {admin.isSuperAdmin && 'Super'} Admin
+              </Typography>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
