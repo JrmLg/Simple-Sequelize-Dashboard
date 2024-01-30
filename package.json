@@ -19,6 +19,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "front": "cd lib/client && npm start",
     "project1": "nodemon ./test/project1/index.js",
     "project2": "nodemon ./test/project2/index.js",
     "sync": "browser-sync start --proxy localhost:3000 --files='lib/**/*' --port 8080"
