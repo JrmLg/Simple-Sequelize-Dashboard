@@ -11,13 +11,13 @@ export function useAuth() {
 export function AuthProvider(props) {
   const [admin, setAdmin] = useState(null)
   const [isAuth, setIsAuth] = useState(null)
+  const [sessionChecked, setSessionChecked] = useState(false)
 
   useEffect(() => {
     checkSessionConnexion()
   }, [])
 
   function handleLogin(admin) {
-    console.log('login with admin :', admin)
     setIsAuth(true)
     setAdmin(admin)
   }
@@ -32,11 +32,12 @@ export function AuthProvider(props) {
     if (res.data.isAuthenticated) {
       handleLogin(res.data.admin)
     }
+    setSessionChecked(true)
   }
 
   return (
     <>
-      {!isAuth && <LoginPage onLogin={handleLogin} />}
+      {sessionChecked && !isAuth && <LoginPage onLogin={handleLogin} />}
       {isAuth && <AuthContext.Provider value={{ admin, isAuth, handleLogin, handleLogout }}>{props.children}</AuthContext.Provider>}
     </>
   )
