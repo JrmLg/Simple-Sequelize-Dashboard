@@ -1,25 +1,27 @@
 import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
 import CssBaseline from '@mui/material/CssBaseline'
 
 import Navbar from '../components/navbar'
 import Sidebar from '../components/sidebar'
+import TableView from '../components/tableView'
 
+import { useState } from 'react'
 import { AuthProvider } from '../contexts/AuthContext'
 
 function App() {
+  const [currentTable, setCurrentTable] = useState()
+
   return (
     <>
       <CssBaseline />
       <AuthProvider>
-        <Navbar />
-        <Box sx={{ display: 'flex', height: '100%' }}>
-          <Sidebar />
+        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+          <Navbar />
 
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <Typography paragraph>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Typography>
-            <Typography paragraph>Consequat mauris nunc congue nisi vitae suscipit.</Typography>
+          <Box sx={{ display: 'flex', flexGrow: 1 }}>
+            <Sidebar onTableNameClick={setCurrentTable} />
+            {currentTable && <TableView table={currentTable} />}
           </Box>
         </Box>
       </AuthProvider>

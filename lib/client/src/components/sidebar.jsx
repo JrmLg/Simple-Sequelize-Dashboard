@@ -12,7 +12,7 @@ import ListItemText from '@mui/material/ListItemText'
 
 import TableChartIcon from '@mui/icons-material/TableChart'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import MenuIcon from '@mui/icons-material/Menu'
 
 import { useEffect, useState, useRef } from 'react'
 
@@ -21,7 +21,7 @@ import { useAuth } from '../contexts/AuthContext'
 
 import ConditionalWrapper from '../components/utils/conditionalWrapper'
 
-function MenuItem({ key, text, tooltip, color = 'primary' }) {
+function MenuItem({ key, text, tooltip, color = 'primary', onClick }) {
   return (
     <ListItem key={key} disablePadding>
       <ConditionalWrapper
@@ -34,7 +34,7 @@ function MenuItem({ key, text, tooltip, color = 'primary' }) {
           )
         }}
       >
-        <ListItemButton>
+        <ListItemButton onClick={onClick}>
           <ListItemIcon sx={{ minWidth: 40 }}>
             <TableChartIcon color={color} />
           </ListItemIcon>
@@ -45,9 +45,9 @@ function MenuItem({ key, text, tooltip, color = 'primary' }) {
   )
 }
 
-export default function Sidebar() {
-  const [appTableNames, setAppTableNames] = useState([])
-  const [sdTableNames, setSdTableNames] = useState([])
+export default function Sidebar({ onTableNameClick }) {
+  const [appTables, setAppTables] = useState([])
+  const [sdTables, setSdTables] = useState([])
   const [open, setOpen] = useState(true)
   const [drawerWidth, setDrawerWidth] = useState(240)
 
@@ -56,68 +56,78 @@ export default function Sidebar() {
   const drawerRef = useRef(null)
 
   useEffect(() => {
-    backend.get('./tables/').then((tableNames) => {
-      setAppTableNames(tableNames.data)
+    backend.get('./tables/').then((tables) => {
+      setAppTables(tables.data)
     })
-    backend.get('./superAdmin/tables/').then((tableNames) => {
-      setSdTableNames(tableNames.data)
+    backend.get('./superAdmin/tables/').then((tables) => {
+      setSdTables(tables.data)
     })
   }, [])
 
   return (
-    <nav>
-      <Box sx={{ display: 'flex', flexDirection: 'row', height: '100%' }}>
-        <Drawer
-          ref={drawerRef}
-          variant="persistent"
-          open={true}
-          sx={{
-            position: 'relative',
-            width: open ? drawerWidth : 55,
-            flexShrink: 0,
-            transition: 'width 0.5s',
+    <Drawer
+      ref={drawerRef}
+      variant="persistent"
+      open={true}
+      height="100%"
+      sx={{
+        position: 'relative',
+        width: open ? drawerWidth : 55,
+        flexShrink: 0,
+        transition: 'width 0.4s',
 
-            '& .MuiDrawer-paper': {
-              position: 'relative',
-              boxSizing: 'border-box',
-            },
-          }}
-        >
-          <Box sx={{ overflowX: 'hidden' }}>
-            {admin.isSuperAdmin && (
-              <>
-                <List>
-                  {sdTableNames
-                    .map((tableName) => {
-                      let displayedName = tableName.replace('sd_', '')
-                      displayedName = displayedName.at(0).toUpperCase() + displayedName.slice(1)
-                      return [tableName, displayedName]
-                    })
-                    .map(([tableName, displayedName], index) => (
-                      <MenuItem key={tableName} text={displayedName} color="warning" tooltip={!open && displayedName} />
-                    ))}
-                </List>
-                <Divider />
-              </>
-            )}
+        '& .MuiDrawer-paper': {
+          position: 'relative',
+          boxSizing: 'border-box',
+        },
+      }}
+    >
+      <Button
+        sx={{ minWidth: 40, minHeight: 56 }}
+        onClick={() => {
+          setOpen(!open)
+        }}
+      >
+        {open ? <ChevronLeftIcon /> : <MenuIcon />}
+      </Button>
+      <Divider />
+
+      <Box sx={{ overflowX: 'hidden' }}>
+        {admin.isSuperAdmin && (
+          <>
             <List>
-              {appTableNames
-                .map((tableName) => [tableName, tableName.at(0).toUpperCase() + tableName.slice(1)])
-                .map(([tableName, displayedName], index) => (
-                  <MenuItem key={tableName} text={displayedName} tooltip={displayedName} />
+              {sdTables
+                .filter((table) => !table.isJonctionTable)
+                .map((table, index) => (
+                  <MenuItem
+                    key={table.tableName}
+                    text={table.modelName}
+                    color="warning"
+                    tooltip={!open && table.modelName}
+                    onClick={() => {
+                      onTableNameClick(table)
+                    }}
+                  />
                 ))}
             </List>
-          </Box>
-        </Drawer>
-        <Button
-          sx={{ minWidth: 10, p: 0 }}
-          onClick={() => {
-            setOpen(!open)
-          }}
-        >
-          {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-        </Button>
+            <Divider />
+          </>
+        )}
+        <List>
+          {appTables
+            .filter((table) => !table.isJonctionTable)
+            .map((table, index) => (
+              <MenuItem
+                key={table.tableName}
+                text={table.modelName}
+                tooltip={!open && table.modelName}
+                onClick={() => {
+                  onTableNameClick(table)
+                }}
+              />
+            ))}
+        </List>
       </Box>
-    </nav>
+    </Drawer>
   )
 }
