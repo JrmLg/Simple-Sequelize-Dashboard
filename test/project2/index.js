@@ -21,8 +21,9 @@ app.set('trust proxy', 1)
 
 app.use(cookieParser())
 
-app.use(useSimpleDash(sequelize))
+// Our middleware must be installed after session if session is installed.
 app.use(session())
+app.use(useSimpleDash(sequelize))
 
 app.use(loadSessionUserInLocals())
 

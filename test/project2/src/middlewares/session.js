@@ -7,7 +7,7 @@ const MINUTES = 60 * 1000
 function sessionMiddleware() {
   return session({
     name: 'user_session',
-    secret: 'A super secret string', // Cette clé permet de générer les tokens qui vont être stockés dans les cookies
+    secret: process.env.SECRET_SESSION || 'secret', // Cette clé permet de générer les tokens qui vont être stockés dans les cookies
     resave: false, // Resauvegarde la session à la fin d'une requête même si elle n'a pas été modifiée
     saveUninitialized: true, // Sauvegarder la session même si elle est vide
 

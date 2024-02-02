@@ -2,6 +2,7 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
 
 import { useAuth } from '../contexts/AuthContext'
 
@@ -12,9 +13,11 @@ export default function Navbar() {
     <Box sx={{ display: 'flex' }}>
       <AppBar position="relative" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
-          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
-            Dashboard
-          </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <Link variant="h6" href="/" underline="none" color="inherit">
+              Dashboard
+            </Link>
+          </Box>
 
           {isAuth && (
             <Box>

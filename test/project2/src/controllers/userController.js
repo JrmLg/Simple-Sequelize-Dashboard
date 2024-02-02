@@ -50,7 +50,7 @@ const userController = {
         },
       })
 
-      if (!bcrypt.compareSync(req.body.password, user.password)) {
+      if (!user || !bcrypt.compareSync(req.body.password, user.password)) {
         res.render('login', {
           error: "L'email ou le mot de passe ne correspondent pas.",
           ...req.body,
